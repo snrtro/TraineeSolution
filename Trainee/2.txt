@@ -1,0 +1,40 @@
+﻿using System;
+
+namespace TinkoffTrainee
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            var ratesLine = Console.ReadLine().Split(' ');
+            var valuesLine = Console.ReadLine().Split(' ');
+            var rates = new int[ratesLine.Length];
+            var values = new int[valuesLine.Length];
+            for (int i = 0; i < ratesLine.Length; i++)
+            {
+                rates[i] =  Int32.Parse(ratesLine[i]);
+                values[i] =  Int32.Parse(valuesLine[i]);
+            }
+            
+            var k = values[0] / rates[0] + values[1] / rates[1] + values[2] / rates[2];
+            if (k == 0)
+            {
+                Console.WriteLine(k);
+                return;
+            }
+            
+            Console.WriteLine(Result(k+2)/(Result(2)*Result(k)));
+        }
+
+        static int Result(int k)
+        {
+            var result = 1;
+            for (int i = 2; i <= k; i++)
+            {
+                result *= i;
+            }
+
+            return result;
+        }
+    }
+}

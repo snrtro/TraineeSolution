@@ -1,0 +1,41 @@
+﻿using System;
+
+namespace TinkoffTrainee
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int number;
+            Int32.TryParse(Console.ReadLine(), out number);
+
+            Console.ReadLine();
+            var b_line = Console.ReadLine();
+
+            Console.WriteLine(Result(number, b_line));
+        }
+
+        static int Result(int number, string b_line)
+        {
+            var ugly = 0;
+            var last = 0;
+            var check = 0;
+
+            for (int i = 1; i < number - 1; i++)
+            {
+                var color = b_line[i];
+                if (color == last)
+                    check++;
+                else
+                    check = 0;
+
+                if (check == 3)
+                    ugly++;
+
+                last = color;
+            }
+
+            return ugly;
+        }
+    }
+}
